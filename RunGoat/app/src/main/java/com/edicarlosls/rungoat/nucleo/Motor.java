@@ -2,7 +2,7 @@ package com.edicarlosls.rungoat.nucleo;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.graphics.Color;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -11,14 +11,11 @@ public abstract class Motor extends SurfaceView
 	private Context context;
 	private boolean estaRodando;
 	private SurfaceHolder holder;
-	private Paint paint;
 
 	public Motor(Context context){
 		super(context);
 		this.context = context;
 		this.holder = this.getHolder();
-		paint = new Paint();
-		paint.setColor(0xff000000);
 		
 		iniciar();
 	}
@@ -60,7 +57,7 @@ public abstract class Motor extends SurfaceView
 	}
 	
 	private void limpar(Canvas canvas){
-		canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
+		canvas.drawColor(Color.BLACK);
 	}
 
 	protected abstract void aoIniciar();
