@@ -3,10 +3,12 @@ package com.edicarlosls.rungoat.nucleo;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.view.View.OnTouchListener;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.*;
 
-public abstract class Motor extends SurfaceView
+public abstract class Motor extends SurfaceView implements OnTouchListener
 {
 	private Context context;
 	private boolean estaRodando;
@@ -16,6 +18,7 @@ public abstract class Motor extends SurfaceView
 		super(context);
 		this.context = context;
 		this.holder = this.getHolder();
+		this.setOnTouchListener(this);
 		
 		iniciar();
 	}
@@ -60,8 +63,16 @@ public abstract class Motor extends SurfaceView
 		canvas.drawColor(Color.BLACK);
 	}
 
+	@Override
+	public boolean onTouch(View p1, MotionEvent p2){
+		// TODO: Implement this method
+		return true;
+	}
+
 	protected abstract void aoIniciar();
 	protected abstract void aoAtualizar();
 	protected abstract void aoDesenharNo(Canvas canvas);
 	protected abstract void aoParar();
+	
+	
 }

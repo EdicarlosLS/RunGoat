@@ -46,7 +46,7 @@ public class Fundo
 			}
 		});
 		
-	public static Fundo f2 = new Fundo(0.75f, new Entidade(0, 0, 1280, 720){
+	public static Fundo f2 = new Fundo(0.7f, new Entidade(0, 0, 1280, 720){
 			@Override
 			public void desenhaNo(Canvas canvas){
 				Paint p = new Paint();
@@ -59,7 +59,7 @@ public class Fundo
 			}
 		});
 		
-	public static Fundo f3 = new Fundo(1.25f, new Entidade(0, 0, 1280, 720){
+	public static Fundo f3 = new Fundo(0.9f, new Entidade(0, 0, 1280, 720){
 			@Override
 			public void desenhaNo(Canvas canvas){
 				Paint p = new Paint();
