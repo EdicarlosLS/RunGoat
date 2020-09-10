@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import com.edicarlosls.rungoat.nucleo.Motor;
+import com.edicarlosls.rungoat.nucleo.Colisor;
 import com.edicarlosls.rungoat.nucleo.Entidade;
-import android.view.*;
+import com.edicarlosls.rungoat.nucleo.Motor;
 
 
 public class Jogo extends Motor
@@ -16,6 +16,7 @@ public class Jogo extends Motor
 	Plataformas plat;
 	Cabra cabra;
 	FundoParalax fundo;
+	Colisor colisor;
 
 	public Jogo(Context context){
 		super(context);
@@ -25,6 +26,14 @@ public class Jogo extends Motor
 		plat = new Plataformas();
 		cabra = new Cabra();
 		fundo = new FundoParalax();
+		
+		colisor = new Colisor();
+		
+		for(Plataforma p: plat.get()){
+			colisor.add(p);
+		}
+		
+		colisor.add(cabra);
 	}
 
 	@Override
@@ -35,9 +44,22 @@ public class Jogo extends Motor
 	@Override
 	protected void aoAtualizar(){
 		x += 0.5f;
+		
+		colisor.atualizar();
+		
 		fundo.atualizar();
 		plat.atualiza();
 		cabra.atualizar();
+		if(foiClicado()){
+			cabra.pular();
+		} else 
+		if(estaPressionado()){
+			cabra.planar();
+		}
+		if(foiLiberado()){
+			cabra.cair();
+		}
+		
 	}
 
 	@Override
@@ -52,12 +74,6 @@ public class Jogo extends Motor
 	@Override
 	protected void aoParar(){
 		// TODO: Implement this method
-	}
-
-	@Override
-	public boolean onTouch(View p1, MotionEvent p2){
-		cabra.pular();
-		return true;
 	}
 
 	

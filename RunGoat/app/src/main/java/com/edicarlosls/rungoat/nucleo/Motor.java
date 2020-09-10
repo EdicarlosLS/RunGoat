@@ -64,9 +64,40 @@ public abstract class Motor extends SurfaceView implements OnTouchListener
 	}
 
 	@Override
-	public boolean onTouch(View p1, MotionEvent p2){
-		// TODO: Implement this method
+	public boolean onTouch(View p1, MotionEvent event){
+		switch(event.getAction()){
+			case event.ACTION_DOWN :
+				clicado = true;
+				pressionado = true;
+				liberado = false;
+				break;
+			
+			case event.ACTION_UP :
+				clicado = false;
+				pressionado = false;
+				liberado = true;
+				break;
+				
+			default : 
+				clicado = false;
+				liberado = false;
+		} 
 		return true;
+	}
+	private boolean clicado;
+	private boolean pressionado;
+	private boolean liberado;
+	
+	public boolean foiClicado(){
+		return clicado;
+	}
+	
+	public boolean estaPressionado(){
+		return pressionado;
+	}
+	
+	public boolean foiLiberado(){
+		return liberado;
 	}
 
 	protected abstract void aoIniciar();

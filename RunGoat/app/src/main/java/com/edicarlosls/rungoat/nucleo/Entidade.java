@@ -8,6 +8,7 @@ public class Entidade
 	private float y;
 	private float largura;
 	private float altura;
+	public Entidade[] colisores = new Entidade[4];
 
 	public Entidade(){}
 

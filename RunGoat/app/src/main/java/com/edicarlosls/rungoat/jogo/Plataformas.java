@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 public class Plataformas
 {
@@ -39,5 +40,9 @@ public class Plataformas
 
 	private boolean saiuDaTela(Plataforma plat){
 		return plat.getX() + plat.getLargura() < 0;
+	}
+	
+	public List<Plataforma> get(){
+		return plataformas;
 	}
 }
