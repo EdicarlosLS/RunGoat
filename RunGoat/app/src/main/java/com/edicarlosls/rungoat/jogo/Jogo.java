@@ -52,12 +52,6 @@ public class Jogo extends Motor
 		cabra.atualizar();
 		if(foiClicado()){
 			cabra.pular();
-		} else 
-		if(estaPressionado()){
-			cabra.planar();
-		}
-		if(foiLiberado()){
-			cabra.cair();
 		}
 		
 	}

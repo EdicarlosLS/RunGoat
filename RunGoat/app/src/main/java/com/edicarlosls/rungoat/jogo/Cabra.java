@@ -50,13 +50,5 @@ public class Cabra extends Entidade
 	public void pular(){
 		velocidade = -7;
 	}
-	
-	public void planar(){
-		estado = Estado.PLANANDO;
-	}
-	
-	
-	public void cair(){
-		estado = Estado.CAINDO;
-	}
+
 }
