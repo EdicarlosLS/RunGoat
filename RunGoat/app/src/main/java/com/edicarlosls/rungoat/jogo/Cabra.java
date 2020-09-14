@@ -10,7 +10,7 @@ public class Cabra extends Entidade
 	private Paint p;
 	private float velocidade;
 
-	private enum Estado{NO_CHAO, CAINDO, PLANANDO};
+	private enum Estado{NO_CHAO, CAINDO, PULANDO};
 	private Estado estado;
 	
 	public Cabra(){
@@ -23,15 +23,18 @@ public class Cabra extends Entidade
 
 	@Override
 	public void atualizar(){
-		if(estado == Estado.PLANANDO){
-			setY(getY() + 0.1f);
-		} else if(estado == Estado.CAINDO){
-			velocidade += 0.3f;
-			setY(getY() + velocidade);
+		
+		velocidade += 0.3f;
+		setY(getY() + velocidade);
+		
+		if(velocidade > 0){
+			estado = Estado.CAINDO;
 		}
 		
-		if(colisores[3] != null){
-			setY(colisores[3].getY() - getAltura() + 1);
+		if(estado == Estado.CAINDO &&
+			colisores[3] != null &&
+			colisores[3].getY() <= getY() + getAltura() + 5){
+			setY(colisores[3].getY() - getAltura() - 1);
 			estado = Estado.NO_CHAO;
 			velocidade = 0;
 		}
@@ -41,14 +44,51 @@ public class Cabra extends Entidade
 
 	@Override
 	public void desenhaNo(Canvas canvas){
+		p.setColor(0xffff8800);
+		
 		canvas.drawRect(
 			getX(), getY(),
 			getX() + getLargura(),
 			getY() + getAltura(), p);
+			
+		if(colisores[0] != null){
+			p.setColor(0xff000000);
+			canvas.drawRect(
+				getX(), getY(),
+				getX() + 10,
+				getY() + getAltura(), p);
+		}
+		
+		if(colisores[1] != null){
+			p.setColor(0xff000000);
+			canvas.drawRect(
+				getX(), getY(),
+				getX() + getLargura(),
+				getY() + 10, p);
+		}
+		
+		if(colisores[2] != null){
+			p.setColor(0xff000000);
+			canvas.drawRect(
+				getX() + getLargura() -10,
+				getY(),	
+				getX() + getLargura(),
+				getY() + getAltura(), p);
+		}
+		
+		if(colisores[3] != null){
+			p.setColor(0xff000000);
+			canvas.drawRect(
+				getX(),
+				getY() + getAltura() -10,	
+				getX() + getLargura(),
+				getY() + getAltura(), p);
+		}
 	}
 	
 	public void pular(){
 		velocidade = -7;
+		estado = Estado.PULANDO;
 	}
 
 }
