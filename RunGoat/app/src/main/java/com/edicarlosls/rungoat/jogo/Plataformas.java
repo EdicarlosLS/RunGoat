@@ -14,10 +14,10 @@ public class Plataformas
 	public Plataformas(){
 		plataformas = new ArrayList<>();
 		plataformas.addAll(Arrays.asList(
-							   new Plataforma(0, 670, 350, 50),
+							   new Plataforma(0, 670, 1950, 50),
 							   new Plataforma(100, 550, 150, 120),
 							   new Plataforma(200, 420, 100, 40),
-							   new Plataforma(400, 670, 150, 50),
+							   new Plataforma(1400, 670, 2150, 50),
 							   new Plataforma(600, 670, 250, 50),
 							   new Plataforma(300, 420, 120, 40)	
 						   ));

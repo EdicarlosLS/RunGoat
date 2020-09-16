@@ -9,6 +9,7 @@ public class Cabra extends Entidade
 {
 	private Paint p;
 	private float velocidade;
+	private float velocidadeLimite;
 
 	private enum Estado{NO_CHAO, CAINDO, PULANDO};
 	private Estado estado;
@@ -18,13 +19,18 @@ public class Cabra extends Entidade
 		p = new Paint();
 		p.setColor(0xffff8800);
 		velocidade = 0;
+		velocidadeLimite = 7;
 		estado = Estado.CAINDO;
 	}
 
 	@Override
 	public void atualizar(){
 		
-		velocidade += 0.3f;
+		velocidade += 0.33f;
+		if(velocidade > velocidadeLimite){
+			velocidade = velocidadeLimite;
+		}
+		
 		setY(getY() + velocidade);
 		
 		if(velocidade > 0){
@@ -33,8 +39,8 @@ public class Cabra extends Entidade
 		
 		if(estado == Estado.CAINDO &&
 			colisores[3] != null &&
-			colisores[3].getY() <= getY() + getAltura() + 5){
-			setY(colisores[3].getY() - getAltura() - 1);
+			getY() + getAltura() <= colisores[3].getY() + 15){
+			setY(colisores[3].getY() - getAltura());
 			estado = Estado.NO_CHAO;
 			velocidade = 0;
 		}
@@ -87,8 +93,10 @@ public class Cabra extends Entidade
 	}
 	
 	public void pular(){
-		velocidade = -7;
-		estado = Estado.PULANDO;
-	}
+		if(estado == Estado.NO_CHAO){
+			velocidade = -9.5f;
+			estado = Estado.PULANDO;
+		}
+	}		
 
 }
