@@ -39,11 +39,14 @@ public class Cabra extends Entidade
 		
 		if(estado == Estado.CAINDO &&
 			colisores[3] != null &&
+			colisores[3] instanceof Plataforma &&
 			getY() + getAltura() <= colisores[3].getY() + 15){
 			setY(colisores[3].getY() - getAltura());
 			estado = Estado.NO_CHAO;
 			velocidade = 0;
 		}
+		
+		
 	}
 	
 	

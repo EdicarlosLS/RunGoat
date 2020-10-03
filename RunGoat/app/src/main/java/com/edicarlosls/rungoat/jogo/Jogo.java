@@ -14,6 +14,7 @@ public class Jogo extends Motor
 	Paint paint;
 	float x = 0.5f;
 	Plataformas plat;
+	Moedas moedas;
 	Cabra cabra;
 	FundoParalax fundo;
 	Colisor colisor;
@@ -24,6 +25,7 @@ public class Jogo extends Motor
 		paint.setColor(0xffff0000);
 
 		plat = new Plataformas();
+		moedas = new Moedas();
 		cabra = new Cabra();
 		fundo = new FundoParalax();
 		
@@ -31,6 +33,10 @@ public class Jogo extends Motor
 		
 		for(Plataforma p: plat.get()){
 			colisor.add(p);
+		}
+		
+		for(Moeda m : moedas.get()){
+			colisor.add(m);
 		}
 		
 		colisor.add(cabra);
@@ -48,7 +54,10 @@ public class Jogo extends Motor
 		colisor.atualizar();
 		
 		fundo.atualizar();
+		
 		plat.atualiza();
+		moedas.atualiza();
+		
 		cabra.atualizar();
 		if(foiClicado()){
 			cabra.pular();
@@ -62,6 +71,7 @@ public class Jogo extends Motor
 		canvas.drawCircle(x, 50, 20, paint);
 		fundo.desenhaNo(canvas);
 		plat.desenhaNo(canvas);
+		moedas.desenhaNo(canvas);
 		cabra.desenhaNo(canvas);
 	}
 
