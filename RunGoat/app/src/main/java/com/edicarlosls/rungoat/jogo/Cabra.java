@@ -14,13 +14,16 @@ public class Cabra extends Entidade
 	private enum Estado{NO_CHAO, CAINDO, PULANDO};
 	private Estado estado;
 	
-	public Cabra(){
+	private HDU hdu;
+	
+	public Cabra(HDU hdu){
 		super(200,- 564, 100, 100);
 		p = new Paint();
 		p.setColor(0xffff8800);
 		velocidade = 0;
 		velocidadeLimite = 7;
 		estado = Estado.CAINDO;
+		this.hdu = hdu;
 	}
 
 	@Override
@@ -46,6 +49,15 @@ public class Cabra extends Entidade
 			velocidade = 0;
 		}
 		
+		if(colisores[2] instanceof Moeda){
+			hdu.aumentaMoedas();
+			colisores[2].setX(-25);
+		}
+		
+		if(colisores[3] instanceof Moeda){
+			hdu.aumentaMoedas();
+			colisores[3].setX(-25);
+		}
 		
 	}
 	

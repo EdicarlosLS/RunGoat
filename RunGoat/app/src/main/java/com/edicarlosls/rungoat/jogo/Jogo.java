@@ -18,18 +18,24 @@ public class Jogo extends Motor
 	Cabra cabra;
 	FundoParalax fundo;
 	Colisor colisor;
+	HDU hdu;
 
 	public Jogo(Context context){
 		super(context);
+		
+		hdu = new HDU();
+		
 		paint = new Paint();
 		paint.setColor(0xffff0000);
 
 		plat = new Plataformas();
 		moedas = new Moedas();
-		cabra = new Cabra();
+		cabra = new Cabra(hdu);
 		fundo = new FundoParalax();
 		
 		colisor = new Colisor();
+		
+		
 		
 		for(Plataforma p: plat.get()){
 			colisor.add(p);
@@ -63,6 +69,7 @@ public class Jogo extends Motor
 			cabra.pular();
 		}
 		
+		hdu.aumentaDistancia();
 	}
 
 	@Override
@@ -73,6 +80,7 @@ public class Jogo extends Motor
 		plat.desenhaNo(canvas);
 		moedas.desenhaNo(canvas);
 		cabra.desenhaNo(canvas);
+		hdu.desenhaNo(canvas);
 	}
 
 	@Override
