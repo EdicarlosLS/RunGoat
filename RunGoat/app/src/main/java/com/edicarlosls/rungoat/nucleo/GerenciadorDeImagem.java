@@ -25,10 +25,13 @@ public class GerenciadorDeImagem
 		return instancia;
 	}
 	
-	public Bitmap carrega(int idImagem){
-		if(!map.containsKey(idImagem)){
+	public Bitmap carrega(int idImagem, float largura, float altura){
+		if(!map.containsKey(idImagem) || 
+			map.get(idImagem).getWidth() == largura ||
+			map.get(idImagem).getHeight() == altura){
 			Bitmap bit = BitmapFactory.decodeResource(Motor.getResources(), idImagem);
-			map.put(idImagem, bit);
+			Bitmap bit2 = Bitmap.createScaledBitmap(bit, (int) largura, (int) altura, false);
+			map.put(idImagem, bit2);
 		}
 		
 		return map.get(idImagem);

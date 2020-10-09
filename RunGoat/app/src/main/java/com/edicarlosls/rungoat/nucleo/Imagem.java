@@ -8,8 +8,8 @@ public class Imagem extends Entidade
 {
 	private Bitmap bitmap;
 	
-	public Imagem(Bitmap bitmap, float x, float y, float largura, float altura){
-		super(x, y, largura, altura);
+	public Imagem(Bitmap bitmap, float x, float y){
+		super(x, y, bitmap.getWidth(), bitmap.getHeight());
 		this.bitmap = bitmap;
 	}
 

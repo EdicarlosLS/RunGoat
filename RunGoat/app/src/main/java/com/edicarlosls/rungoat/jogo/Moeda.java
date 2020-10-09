@@ -4,26 +4,14 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.edicarlosls.rungoat.nucleo.Entidade;
+import com.edicarlosls.rungoat.nucleo.GerenciadorDeImagem;
+import com.edicarlosls.rungoat.nucleo.Imagem;
+import com.edicarlosls.rungoat.R;
 
-public class Moeda extends Entidade
+public class Moeda extends Imagem
 {
-	private Paint paint;
-
 	public Moeda(float x, float y, float largura, float altura){
-		super(x, y, largura, altura);
-		paint = new Paint();
-		paint.setColor(0xffdddd22);
+		super(GerenciadorDeImagem.instancia().carrega(R.drawable.moeda, largura, altura), x, y);
 	}
-
-	@Override
-	public void desenhaNo(Canvas canvas){
-		canvas.drawRect(getX(), getY(), 
-						getX() + getLargura(),
-						getY() + getAltura(),
-						paint);
-
-	}
-
-
 }
 

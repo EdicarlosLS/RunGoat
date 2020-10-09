@@ -44,19 +44,19 @@ public class Cabra extends Entidade
 			colisores[3] != null &&
 			colisores[3] instanceof Plataforma &&
 			getY() + getAltura() <= colisores[3].getY() + 15){
-			setY(colisores[3].getY() - getAltura() - 1);
+			setY(colisores[3].getY() - getAltura());
 			estado = Estado.NO_CHAO;
 			velocidade = 0;
 		}
 		
 		if(colisores[2] instanceof Moeda){
 			hdu.aumentaMoedas();
-			colisores[2].setX(-25);
+			colisores[2].setX(-100);
 		}
 		
 		if(colisores[3] instanceof Moeda){
 			hdu.aumentaMoedas();
-			colisores[3].setX(-25);
+			colisores[3].setX(-100);
 		}
 		
 	}
