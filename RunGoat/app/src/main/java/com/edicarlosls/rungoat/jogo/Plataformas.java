@@ -14,10 +14,10 @@ public class Plataformas
 	public Plataformas(){
 		plataformas = new ArrayList<>();
 		plataformas.addAll(Arrays.asList(
-								//Base
+							   //Base
 							   new Plataforma(0, 670, 1600, 50),
 							   new Plataforma(1700, 670, 400, 50),
-		new Plataforma(2200, 670, 800, 50),
+							   new Plataforma(2200, 670, 800, 50),
 							   new Plataforma(3600, 670, 2400, 50),
 							   //Nivel 1
 							   new Plataforma(900, 550, 500, 120),
@@ -27,14 +27,14 @@ public class Plataformas
 							   new Plataforma(3100, 420, 1200, 40),
 							   //Nivel 3
 							   new Plataforma(3200, 290, 700, 50)
-							   
+
 						   ));
 	}
 
 	public void atualiza(){
 		for (Plataforma p : plataformas){
 			p.setX(p.getX() - 3.5f);
-			if(saiuDaTela(p)){
+			if (saiuDaTela(p)){
 				//p.setX(1280);
 			}
 		}
@@ -49,7 +49,7 @@ public class Plataformas
 	private boolean saiuDaTela(Plataforma plat){
 		return plat.getX() + plat.getLargura() < 0;
 	}
-	
+
 	public List<Plataforma> get(){
 		return plataformas;
 	}

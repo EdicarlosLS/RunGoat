@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import com.edicarlosls.rungoat.nucleo.Colisor;
 import com.edicarlosls.rungoat.nucleo.Entidade;
 import com.edicarlosls.rungoat.nucleo.Motor;
+import com.edicarlosls.rungoat.nucleo.*;
 
 
 public class Jogo extends Motor
@@ -19,6 +20,7 @@ public class Jogo extends Motor
 	FundoParalax fundo;
 	Colisor colisor;
 	HDU hdu;
+	Animacao anim;
 
 	public Jogo(Context context){
 		super(context);
@@ -46,6 +48,11 @@ public class Jogo extends Motor
 		}
 		
 		colisor.add(cabra);
+		
+		anim = new Animacao(cabra.getX(), cabra.getY(), cabra.getLargura(), cabra.getAltura());
+		for(int i = 0; i < 7; i++){
+			anim.add(com.edicarlosls.rungoat.R.drawable.run_1 + i);
+		}
 	}
 
 	@Override
@@ -70,6 +77,9 @@ public class Jogo extends Motor
 		}
 		
 		hdu.aumentaDistancia();
+		anim.atualizar();
+		anim.setX(cabra.getX());
+		anim.setY(cabra.getY());
 	}
 
 	@Override
@@ -81,6 +91,7 @@ public class Jogo extends Motor
 		moedas.desenhaNo(canvas);
 		cabra.desenhaNo(canvas);
 		hdu.desenhaNo(canvas);
+		//anim.desenhaNo(canvas);
 	}
 
 	@Override
