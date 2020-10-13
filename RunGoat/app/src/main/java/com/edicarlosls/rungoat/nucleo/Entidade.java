@@ -58,5 +58,19 @@ public class Entidade
 	public float getAltura(){
 		return altura;
 	}
+	
+	public boolean foiClicado(float x, float y){
+		return x > getX() 
+		   && x < getX() + getLargura()
+		   && y > getY() 
+		   && y < getY() + getAltura();
+	}
+	
+	public boolean saiuDaTela(){
+		return getX() + getLargura() < 0
+			|| getX() > 1280
+			|| getY() + getAltura() < 0
+			|| getY() > 720;
+	}
 
 }

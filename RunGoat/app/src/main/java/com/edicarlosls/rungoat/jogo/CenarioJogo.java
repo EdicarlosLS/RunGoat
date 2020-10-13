@@ -7,10 +7,8 @@ import android.graphics.Paint;
 import com.edicarlosls.rungoat.nucleo.Cenario;
 import com.edicarlosls.rungoat.nucleo.Colisor;
 import com.edicarlosls.rungoat.nucleo.Entidade;
+import com.edicarlosls.rungoat.nucleo.GerenciadorDeEntrada;
 import com.edicarlosls.rungoat.nucleo.Motor;
-import com.edicarlosls.rungoat.nucleo.*;
-
-
 
 public class CenarioJogo extends Cenario
 {
@@ -64,6 +62,9 @@ public class CenarioJogo extends Cenario
 		}
 
 		hdu.aumentaDistancia();
+		if(cabra.saiuDaTela()){
+			mudarCenarioPara(new CenarioFimDeJogo());
+		}
 	}
 
 	@Override
@@ -73,6 +74,7 @@ public class CenarioJogo extends Cenario
 		moedas.desenhaNo(canvas);
 		cabra.desenhaNo(canvas);
 		hdu.desenhaNo(canvas);
+		
 	}
 
 	@Override

@@ -10,35 +10,39 @@ import com.edicarlosls.rungoat.nucleo.Imagem;
 
 import com.edicarlosls.rungoat.R;
 
-public class CenarioAbertura extends Cenario
+public class CenarioFimDeJogo extends Cenario
 {
-	private Imagem cabra;
 	private Imagem fundoNuvem;
 	private Imagem fundoMontanha1;
 	private Imagem fundoMontanha2;
-	private Imagem iniciar;
+	private Imagem morto;
+	private Imagem reiniciar;
+	private Imagem sair;
 	private Plataforma plataforma;
-	
+
 	@Override
 	public void iniciar(){
-		cabra = new Imagem(GerenciadorDeImagem.instancia().carrega(R.drawable.run_1, 500, 500), 390, 110);
+		morto = new Imagem(GerenciadorDeImagem.instancia().carrega(R.drawable.morto, 500, 500), 390, 110);
 		fundoNuvem = new Imagem(GerenciadorDeImagem.instancia().carrega(R.drawable.nuvem, 1280, 720), 0, 0);
 		fundoMontanha1 = new Imagem(GerenciadorDeImagem.instancia().carrega(R.drawable.montanha1, 1280, 720), 0, 0);
 		fundoMontanha2 = new Imagem(GerenciadorDeImagem.instancia().carrega(R.drawable.montanha2, 1280, 720), 0, 0);
-		iniciar = new Imagem(GerenciadorDeImagem.instancia().carrega(R.drawable.iniciar, 400, 120), 440, 530);
+		reiniciar = new Imagem(GerenciadorDeImagem.instancia().carrega(R.drawable.ic_launcher, 400, 120), 440, 530);
+		sair = new Imagem(GerenciadorDeImagem.instancia().carrega(R.drawable.ic_launcher, 400, 120), 440, 530);
 		plataforma = new Plataforma(0, 670, 1280, 50);
-		
+
 	}
 
 	@Override
 	public void atualizar(){
 		if(GerenciadorDeEntrada.instancia().foiClicado()){
 			PointF point = GerenciadorDeEntrada.instancia().getPoint();
-			if(iniciar.foiClicado(point.x, point.y)){
+			if(reiniciar.foiClicado(point.x, point.y)){
 				mudarCenarioPara(new CenarioJogo());
+			} else if(sair.foiClicado(point.x, point.y)){
+				mudarCenarioPara(new CenarioAbertura());
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -47,9 +51,9 @@ public class CenarioAbertura extends Cenario
 		fundoMontanha1.desenhaNo(canvas);
 		fundoMontanha2.desenhaNo(canvas);
 		plataforma.desenhaNo(canvas);
-		cabra.desenhaNo(canvas);
-		iniciar.desenhaNo(canvas);
-		
+		morto.desenhaNo(canvas);
+		reiniciar.desenhaNo(canvas);
+		sair.desenhaNo(canvas);
 	}
 
 	@Override
