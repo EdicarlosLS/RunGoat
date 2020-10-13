@@ -16,14 +16,20 @@ public abstract class Motor extends SurfaceView implements OnTouchListener
 	private boolean estaRodando;
 	private SurfaceHolder holder;
 	private float pulaFrames;
+	private GerenciadorDeCenario gerenciadorDeCenario;
 
-	public Motor(Context context){
+
+	public Motor(Context context, Cenario cenario){
 		super(context);
 		this.context = context;
 		this.holder = this.getHolder();
 		this.setOnTouchListener(this);
 		pulaFrames = 0f;
+		gerenciadorDeCenario = new GerenciadorDeCenario(cenario);
+		cenario.setGerenciador(gerenciadorDeCenario);
 		iniciar();
+		
+		
 	}
 
 	public void rodar(){
@@ -46,23 +52,28 @@ public abstract class Motor extends SurfaceView implements OnTouchListener
 	
 
 	public void iniciar(){
-		aoIniciar();
+		//aoIniciar();
+		gerenciadorDeCenario.iniciar();
 		rodar();
 	}
 
 	private void atualizar(){
-		aoAtualizar();
+		//aoAtualizar();
+		gerenciadorDeCenario.atualizar();
+		GerenciadorDeEntrada.instancia().reset();
 	}
 
 	private void desenhar(){
 		Canvas canvas = holder.lockCanvas();
 		limpar(canvas);
-		aoDesenharNo(canvas);
+		//aoDesenharNo(canvas);
+		gerenciadorDeCenario.desenhaNo(canvas);
 		holder.unlockCanvasAndPost(canvas);
 	}
 
 	public void parar(){
-		aoParar();
+		//aoParar();
+		gerenciadorDeCenario.parar();
 		estaRodando = false;	
 	}
 	
@@ -72,11 +83,14 @@ public abstract class Motor extends SurfaceView implements OnTouchListener
 
 	@Override
 	public boolean onTouch(View p1, MotionEvent event){
+		
 		switch(event.getAction()){
 			case event.ACTION_DOWN :
 				clicado = true;
 				pressionado = true;
 				liberado = false;
+				GerenciadorDeEntrada.instancia().set(event.getX(), event.getY());
+				//gerenciadorDeCenario.tocadoEm(event.getX(), event.getY());
 				break;
 			
 			case event.ACTION_UP :

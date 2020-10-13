@@ -23,12 +23,12 @@ public class Cabra extends Entidade
 	private HDU hdu;
 
 	public Cabra(HDU hdu){
-		super(200, - 564, 100, 100);
+		super(200, 570, 100, 100);
 		p = new Paint();
 		p.setColor(0xffff8800);
 		velocidade = 0;
 		velocidadeLimite = 7;
-		estado = Estado.CAINDO;
+		estado = Estado.NO_CHAO;
 		this.hdu = hdu;
 		animacoes = new HashMap<>();
 

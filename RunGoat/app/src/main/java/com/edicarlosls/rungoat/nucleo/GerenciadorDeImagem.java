@@ -27,8 +27,8 @@ public class GerenciadorDeImagem
 	
 	public Bitmap carrega(int idImagem, float largura, float altura){
 		if(!map.containsKey(idImagem) || 
-			map.get(idImagem).getWidth() == largura ||
-			map.get(idImagem).getHeight() == altura){
+			map.get(idImagem).getWidth() != largura ||
+			map.get(idImagem).getHeight() != altura){
 			Bitmap bit = BitmapFactory.decodeResource(Motor.getResources(), idImagem);
 			Bitmap bit2 = Bitmap.createScaledBitmap(bit, (int) largura, (int) altura, false);
 			map.put(idImagem, bit2);

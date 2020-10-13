@@ -15,27 +15,27 @@ public class Moedas
 		moedas = new ArrayList<>();
 		moedas.addAll(Arrays.asList(
 						  //Base
-						  new Moeda(100, 580, 25, 25),
-						  new Moeda(500, 580, 25, 25),
-						  new Moeda(900, 580, 25, 25),
-						  new Moeda(1700, 580, 25, 25),
-						  new Moeda(2000, 580, 25, 25),
-						  new Moeda(2800, 580, 25, 25),
-						  new Moeda(3800, 580, 25, 25),
-						  new Moeda(4200, 580, 25, 25),
+						  new Moeda(100, 595, 40, 40),
+						  new Moeda(500, 595, 40, 40),
+						  new Moeda(900, 595, 40, 40),
+						  new Moeda(1700, 595, 40, 40),
+						  new Moeda(2000, 595, 40, 40),
+						  new Moeda(2800, 595, 40, 40),
+						  new Moeda(3800, 595, 40, 40),
+						  new Moeda(4200, 595, 40, 40),
 						  //Nivel 1
-						  new Moeda(1000, 460, 25, 25),
-						  new Moeda(1300, 460, 25, 25),
-						  new Moeda(2800, 460, 25, 25),
-						  new Moeda(3100, 460, 25, 25),
-						  new Moeda(5200, 460, 25, 25),
-						  new Moeda(5400, 460, 25, 25),
+						  new Moeda(1000, 475, 40, 40),
+						  new Moeda(1300, 475, 40, 40),
+						  new Moeda(2800, 475, 40, 40),
+						  new Moeda(3100, 475, 40, 40),
+						  new Moeda(5200, 475, 40, 40),
+						  new Moeda(5400, 475, 40, 40),
 						  //Nivel 2
-						  new Moeda(3300, 330, 25, 25),
-						  new Moeda(3500, 330, 25, 25),
+						  new Moeda(3300, 345, 40, 40),
+						  new Moeda(3500, 345, 40, 40),
 						  //Nivel 3
-						  new Moeda(3400, 200, 25, 25),
-						  new Moeda(3600, 200, 25, 25)
+						  new Moeda(3400, 215, 40, 40),
+						  new Moeda(3600, 215, 40, 40)
 					  ));
 	}
 
