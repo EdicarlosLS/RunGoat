@@ -15,14 +15,14 @@ public class Moedas
 		moedas = new ArrayList<>();
 		moedas.addAll(Arrays.asList(
 						  //Base
-						  new Moeda(100, 595, 40, 40),
-						  new Moeda(500, 595, 40, 40),
-						  new Moeda(900, 595, 40, 40),
-						  new Moeda(1700, 595, 40, 40),
-						  new Moeda(2000, 595, 40, 40),
-						  new Moeda(2800, 595, 40, 40),
-						  new Moeda(3800, 595, 40, 40),
-						  new Moeda(4200, 595, 40, 40),
+						  new Moeda(100, 630, 40, 40),
+						  new Moeda(500, 630, 40, 40),
+						  new Moeda(900, 630, 40, 40),
+						  new Moeda(1700, 630, 40, 40),
+						  new Moeda(2000, 630, 40, 40),
+						  new Moeda(2800, 630, 40, 40),
+						  new Moeda(3800, 630, 40, 40),
+						  new Moeda(4200, 630, 40, 40),
 						  //Nivel 1
 						  new Moeda(1000, 475, 40, 40),
 						  new Moeda(1300, 475, 40, 40),

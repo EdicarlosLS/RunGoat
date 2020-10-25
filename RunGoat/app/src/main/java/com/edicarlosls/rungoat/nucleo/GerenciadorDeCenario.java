@@ -2,16 +2,17 @@ package com.edicarlosls.rungoat.nucleo;
 
 import android.graphics.Canvas;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 public class GerenciadorDeCenario
 {
-	private List<Cenario> cenarios;
+	private Stack<Cenario> cenarios;
 	private int cenarioAtivo;
 
 	public GerenciadorDeCenario(Cenario cenario){
-		cenarios = new ArrayList<>();
+		cenarios = new Stack<>();
 		cenarioAtivo = 0;
 		cenarios.add(cenario);
 	}
@@ -36,25 +37,32 @@ public class GerenciadorDeCenario
 	}
 	
 	public void fecharCenario(){
-		cenarios.get(cenarioAtivo).parar();
+		/*cenarios.get(cenarioAtivo).parar();
 		cenarioAtivo = cenarioAtivo - 1;
-		cenarios.get(cenarioAtivo).iniciar();
+		cenarios.get(cenarioAtivo).iniciar();*/
+		parar();
+		iniciar();
 	}
 
 	public void iniciar(){
-		cenarios.get(cenarioAtivo).iniciar();
+		//cenarios.get(cenarioAtivo).iniciar();
+		cenarios.peek().iniciar();
 	}
 
 	public void atualizar(){
-		cenarios.get(cenarioAtivo).atualizar();
+		//cenarios.get(cenarioAtivo).atualizar();
+		cenarios.peek().atualizar();
 	}
 
 	public void desenhaNo(Canvas canvas){
-		cenarios.get(cenarioAtivo).desenhaNo(canvas);
+		//cenarios.get(cenarioAtivo).desenhaNo(canvas);
+		cenarios.peek().desenhaNo(canvas);
 	}
 
 	public void parar(){
-		cenarios.get(cenarioAtivo).parar();
+		//cenarios.get(cenarioAtivo).parar();
+		cenarios.peek().parar();
+		cenarios.pop();
 	}
 
 
