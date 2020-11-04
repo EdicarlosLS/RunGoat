@@ -9,20 +9,23 @@ import java.util.Stack;
 public class GerenciadorDeCenario
 {
 	private Stack<Cenario> cenarios;
-	private int cenarioAtivo;
+	//private int cenarioAtivo;
 
 	public GerenciadorDeCenario(Cenario cenario){
 		cenarios = new Stack<>();
-		cenarioAtivo = 0;
-		cenarios.add(cenario);
+		//cenarioAtivo = 0;
+		//cenarios.add(cenario);
+		cenarios.push(cenario);
 	}
 
 	public void abrirCenario(Cenario cenario){
-		cenarios.get(cenarioAtivo).parar();
-		cenarios.add(cenario);
+		//cenarios.get(cenarioAtivo).parar();
+		//cenarios.add(cenario);
+		cenarios.peek().parar();
+		cenarios.push(cenario);
 		cenario.setGerenciador(this);
 		cenario.iniciar();
-		cenarioAtivo = cenarios.size() - 1;
+		//cenarioAtivo = cenarios.size() - 1;
 	}
 
 	public void abrirCenario(Class<? extends Cenario> classCenario){

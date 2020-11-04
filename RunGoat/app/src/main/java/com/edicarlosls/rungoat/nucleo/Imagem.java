@@ -12,6 +12,11 @@ public class Imagem extends Entidade
 		super(x, y, bitmap.getWidth(), bitmap.getHeight());
 		this.bitmap = bitmap;
 	}
+	
+	public Imagem(int idImagem, float x, float y, float largura, float altura){
+		super(x, y, largura, altura);
+		this.bitmap = GerenciadorDeImagem.instancia().carrega(idImagem, largura, altura);
+	}
 
 	@Override
 	public void desenhaNo(Canvas canvas){

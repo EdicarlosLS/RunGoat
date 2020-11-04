@@ -72,5 +72,13 @@ public class Entidade
 			|| getY() + getAltura() < 0
 			|| getY() > 720;
 	}
+	
+	public void moveX(float x){
+		this.x += x;
+	}
+	
+	public void moveY(float y){
+		this.y += y;
+	}
 
 }

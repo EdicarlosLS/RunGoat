@@ -12,37 +12,39 @@ import com.edicarlosls.rungoat.nucleo.Motor;
 
 public class CenarioJogo extends Cenario
 {
-	Plataformas plat;
-	Moedas moedas;
+	//Plataformas plat;
+	//Moedas moedas;
 	Cabra cabra;
 	FundoParalax fundo;
 	Colisor colisor;
 	HDU hdu;
+	Nivel nivel;
 	
 	public CenarioJogo(){
 		hdu = new HDU();
 
-		plat = new Plataformas();
-		moedas = new Moedas();
+		//plat = new Plataformas();
+		//moedas = new Moedas();
 		cabra = new Cabra(hdu);
 		fundo = new FundoParalax();
 
 		colisor = new Colisor();
-
+		nivel = new Nivel();
 	}
 	
 
 	@Override
 	public void iniciar(){
 		
+		nivel.addColisor(colisor);
 
-		for(Plataforma p: plat.get()){
+		/*for(Plataforma p: plat.get()){
 			colisor.add(p);
 		}
 
 		for(Moeda m : moedas.get()){
 			colisor.add(m);
-		}
+		}*/
 
 		colisor.add(cabra);
 	}
@@ -53,8 +55,10 @@ public class CenarioJogo extends Cenario
 
 		fundo.atualizar();
 
-		plat.atualiza();
-		moedas.atualiza();
+		//plat.atualiza();
+		//moedas.atualiza();
+		
+		nivel.atualiza();
 
 		cabra.atualizar();
 		if(GerenciadorDeEntrada.instancia().foiClicado()){
@@ -70,8 +74,9 @@ public class CenarioJogo extends Cenario
 	@Override
 	public void desenhaNo(Canvas canvas){
 		fundo.desenhaNo(canvas);
-		plat.desenhaNo(canvas);
-		moedas.desenhaNo(canvas);
+		//plat.desenhaNo(canvas);
+		//moedas.desenhaNo(canvas);
+		nivel.desenhaNo(canvas);
 		cabra.desenhaNo(canvas);
 		hdu.desenhaNo(canvas);
 		
